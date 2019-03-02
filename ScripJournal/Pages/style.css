@@ -1,0 +1,87 @@
+/*==============Body============*/
+
+body {
+    background-color: #1b3353;
+    margin: auto;
+    font-family: Antic Slab;
+    color: #ffffff;
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Rock Salt;
+    color: #cd7c16;
+}
+
+h1 {
+    margin-top: 0px;
+}
+
+p, li {
+    text-align: left;
+}
+
+li {
+    padding: 5px 0px 5px 0px;
+}
+
+/*==============Header============*/
+
+/*==============Main Navigation============*/
+
+
+
+/*==============Main Nav Link Style============*/
+
+nav a:link {
+}
+
+nav a:visited {
+}
+
+header img:hover {
+    }
+
+nav a:hover {
+}
+
+nav a:active {
+}
+
+/*==============General Nav Link Style============*/
+
+a:link {
+    color: #cd7c16;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:visited {
+    color: #cd7c16;
+}
+
+a:hover {
+    color: #efaa41;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #ffffff;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/*==============FORM STYLE============*/
+
+form {
+}
+
+/*==============MAIN STYLE============*/
+
+
+/*==============FOOTER STYLE============*/
+
+footer {
+}

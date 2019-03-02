@@ -1,0 +1,91 @@
+﻿@page
+@model ScripJournal.Pages.Scriptures.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <p>
+        Keyword: <input type="text" name="SearchKeyword" value="@Model.KeywordFilter" />
+        Book: <input type="text" name="SearchBook" value="@Model.BookFilter" />
+        <input type="submit" value="Filter" class="btn btn-default"/>
+        <a asp-page="./Index">Back to full List</a>
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BookSort" asp-route-searchBook="@Model.BookFilter" asp-route-searchKeyword="@Model.KeywordFilter">
+                    @Html.DisplayNameFor(model => model.Scripture[0].Book)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scripture[0].Verse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scripture[0].Note)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort" asp-route-searchBook="@Model.BookFilter" asp-route-searchKeyword="@Model.KeywordFilter">
+                    @Html.DisplayNameFor(model => model.Scripture[0].DateAdded)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Scripture)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Verse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAdded)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.Scripture.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Scripture.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Scripture.PageIndex - 1)"
+   asp-route-searchBook="@Model.BookFilter"
+   asp-route-searchKeyword="@Model.KeywordFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Scripture.PageIndex + 1)"
+   asp-route-searchBook="@Model.BookFilter"
+   asp-route-searchKeyword="@Model.KeywordFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
